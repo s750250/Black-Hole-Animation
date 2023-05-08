@@ -1,0 +1,77 @@
+import simplegui
+import random
+
+# Create Global Variable
+t=0
+beans=0
+x=0
+f=0
+u=0
+b=0
+s=0
+d=0
+grass = []
+
+
+def draw_handler(canvas):
+    global t
+    global beans
+    global x
+    global f
+    global u
+    global b
+    global s
+    global d
+    if beans<150:
+        canvas.draw_polygon([(0,450),(600,450),(600,600),(0,600)], 1, "black","lightGreen")
+        canvas.draw_polygon([(150-t,300),(450-t,300),(450-t,460),(150-t,460),], 3,"black","darkBlue")
+        canvas.draw_polygon([(300-t,100),(470-t,300),(130-t,300),(300-t,100)], 3    ,"black","brown")
+        canvas.draw_polygon([(260-t,350),(340-t,350),(340-t,460),(260-t,460)],1,"black","brown")
+        canvas.draw_circle((325-t,407),3,2,"black","yellow")
+        canvas.draw_circle((300-t,225),25,5,"black","lightBlue")
+        canvas.draw_polygon([(175-t,325),(230-t,325),(230-t,380),(175-t,380)],3,"black","lightBlue")
+        canvas.draw_polygon([(370-t,325),(425-t,325),(425-t,380),(370-t,380)],3,"black","lightBlue")
+        canvas.draw_line((202.5-t,325),(202.5-t,380),3,"black")
+        canvas.draw_line((175-t,350.5),(230-t,350.5),3,"black")
+        canvas.draw_line((396-t,325),(396-t,380),3,"black")
+        canvas.draw_line((370-t,350.5),(425-t,350.5),3,"black")
+        t=t+3
+        beans=beans+0.5
+        for hehe in grass:
+            canvas.draw_line((hehe,550),(hehe,random.randint(550,600)), 3, "#1ee157")
+    elif beans<210:
+        canvas.draw_polygon([(150-t+x,300),(450-t+x,300),(450-t+x,460),(150-t+x,460),], 3,"black","darkBlue")
+        canvas.draw_polygon([(300-t+x,100),(470-t+x,300),(130-t+x,300),(300-t+x,100)], 3    ,"black","brown")
+        canvas.draw_polygon([(260-t+x,350),(340-t+x,350),(340-t+x,460),(260-t+x,460)],1,"black","brown")
+        canvas.draw_circle((325-t+f,407),3,2,"black","yellow")
+        canvas.draw_circle((300-t+f,225),25,5,"black","lightBlue")
+        canvas.draw_polygon([(175-t+f,325),(230-t+f,325),(230-t+f,380),(175-t+f,380)],3,"black","lightBlue")
+        canvas.draw_polygon([(370-t+x,325),(425-t+x,325),(425-t+x,380),(370-t+x,380)],3,"black","lightBlue")
+        canvas.draw_line((202.5-t+f,325),(202.5-t+f,380),3,"black")
+        canvas.draw_line((175-t+x,350.5),(230-t+x,350.5),3,"black")
+        canvas.draw_line((396-t+d,325),(396-t+d,380),3,"black")
+        canvas.draw_line((370-t+d,350.5),(425-t+d,350.5),3,"black")
+        canvas.draw_polygon(((300,0),(600,0),(600,600),(300,600)),1,"lightBlue","lightBlue")
+        canvas.draw_polygon([(0,450),(600,450),(600,600),(0,600)], 1, "black","lightGreen")
+        canvas.draw_circle((1200-t,300),10+b,5,"black","black")
+        f=f+20
+        x=x+10
+        b=b+3
+        d=d+15
+        beans=beans+0.5
+    else:
+        canvas.draw_polygon([(0,450),(600,450),(600,600),(0,600)], 1, "black","lightGreen")
+        canvas.draw_circle((1200-t,300),60+b,5,"black","black")
+        b=b+5
+    # Draw Here!
+for i in range(1, 100):
+    x = random.randint(1, 600)
+    grass.append((x))
+    
+    
+
+
+frame = simplegui.create_frame('Testing', 600, 600)
+frame.set_canvas_background("lightBlue")
+frame.set_draw_handler(draw_handler)
+frame.start()
